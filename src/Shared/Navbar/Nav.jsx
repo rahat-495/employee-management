@@ -66,9 +66,9 @@ const Nav = () => {
 
     return (
         <div className="sticky top-0 z-10">
-            <Navbar className="sticky top-0 z-10 h-max max-w-screen-2xl mx-auto border-none bg-[#929292] shadow-none border-2 rounded-none px-4 py-2 lg:px-4 lg:py-1 my-0">
+            <Navbar className="sticky top-0 z-10 h-max max-w-screen-2xl mx-auto border-none bg-[#bfbfff] shadow-none border-2 rounded-none px-4 py-2 lg:px-4 lg:py-1 my-0">
 
-                <div className="flex items-center justify-between text-neutral-50">
+                <div className="flex items-center justify-between text-neutral-950">
                     <Typography
                         className="mr-4 w-28 gro text-xl cursor-pointer py-1.5 font-medium"
                     >
@@ -78,7 +78,7 @@ const Nav = () => {
 
                     <div className="flex items-center gap-4 text-white">
 
-                        <div className="mr-4 hidden lg:block text-neutral-50">{navList}</div>
+                        <div className="mr-4 hidden lg:block text-neutral-950">{navList}</div>
 
                         <div className="flex items-center gap-x-1">
                           {user ? (
@@ -97,7 +97,7 @@ const Nav = () => {
                                   </div>
                                   <div
                                     tabIndex={0}
-                                    className="dropdown-content z-[1] menu p-2 shadow bg-gray-400 rounded-box w-52"
+                                    className="dropdown-content z-[1] menu p-2 shadow bg-[#adadff] rounded-box w-52"
                                   >
                                     <h1 className="m-1 border p-1 rounded-md font-semibold">
                                       {user?.displayName}

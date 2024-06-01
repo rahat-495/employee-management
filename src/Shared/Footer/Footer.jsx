@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <div>
 
-      <footer className="footer text-neutral-content justify-normal items-start flex-col md:flex-row md:justify-evenly md:items-center flex xl:flex-row xl:justify-evenly xl:items-center bg-[#111827]">
+      <footer className="footer text-neutral-content justify-normal items-start flex-col md:flex-row md:justify-evenly md:items-center flex xl:flex-row xl:justify-evenly xl:items-center bg-[#bfbfff]">
 
-        <aside className="w-1/2 p-10 pr-40 mx-auto flex items-end justify-center flex-col bg-[#1F2937]">
+        <aside className="w-1/2 p-10 pr-40 mx-auto flex items-end justify-center flex-col bg-[#7c7cff]">
             <div className="">
             <svg
                 width="50"
@@ -29,7 +29,7 @@ const Footer = () => {
             </div>
         </aside>
 
-        <nav className="w-1/2 p-10 pl-40 mx-auto flex items-start justify-center flex-col bg-[#111827]">
+        <nav className="w-1/2 p-10 pl-40 mx-auto flex items-start justify-center flex-col bg-[#bfbfff]">
           <div className="">
             <h6 className="footer-title">Social</h6>
             <div className="grid grid-flow-col gap-4">
@@ -72,7 +72,7 @@ const Footer = () => {
 
       </footer>
 
-        <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+        <footer className="footer footer-center p-4 bg-[#50506b] text-white">
             <aside>
                 <p>Copyright © {getCurrentYear.getFullYear()} - All right reserved by ACME Industries Ltd</p>
             </aside>
