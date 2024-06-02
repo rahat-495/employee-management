@@ -20,6 +20,9 @@ const Testimonial = () => {
 
     return (
         <div className="mb-20">
+
+            <h1 className="gro text-5xl text-center font-semibold">Testimonials</h1>
+
             <div className="">
                 <Swiper
                     navigation={true}

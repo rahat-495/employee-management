@@ -2,11 +2,13 @@
 import { createContext, useEffect, useState } from "react";
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../Firebase/firebase.config";
+import useAxiosCommon from "../Hooks/useAxiosCommon";
 
 export const AuthContext = createContext(null) ;
 
 const AuthProvider = ({children}) => {
 
+    const axiosCommon = useAxiosCommon() ;
     const [user , setUser] = useState(null) ;
     const [loading , setLoading] = useState(true) ;
 
@@ -49,21 +51,21 @@ const AuthProvider = ({children}) => {
         const unSubscribe = onAuthStateChanged(auth , (currentUser) => {
             setLoading(false) ;
             setUser(currentUser) ;
-            // if(currentUser){
-            //     const userInfo = {email : currentUser.email} ;
-            //     axiosCommon.post(`/jwt` , userInfo)
-            //     .then((res) => {
-            //         if(res.data.token){
-            //             localStorage.setItem('access-token' , res.data.token) ;
-            //         }
-            //     })
-            // }
-            // else{
-            //     localStorage.removeItem('access-token') ;
-            // }
+            if(currentUser){
+                const userInfo = {email : currentUser.email} ;
+                axiosCommon.post(`/jwt` , userInfo)
+                .then((res) => {
+                    if(res.data.token){
+                        localStorage.setItem('access-token' , res.data.token) ;
+                    }
+                })
+            }
+            else{
+                localStorage.removeItem('access-token') ;
+            }
         })
         return unSubscribe ;
-    } , [])
+    } , [axiosCommon])
 
     const authInfo = {
         user ,

@@ -17,6 +17,7 @@ import {
   import { ToastContainer, toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosCommon from "../../Hooks/useAxiosCommon";
 
 const Login = () => {
   
@@ -26,6 +27,7 @@ const Login = () => {
     const [eye , setEye] = useState(false) ;
     const [remember , setRemember] = useState(false) ;
     const [errorText , setErrorText] = useState(false) ;
+    const axiosCommon = useAxiosCommon() ;
 
     const handleSubmit = (e) => {
       e.preventDefault() ;
@@ -40,6 +42,23 @@ const Login = () => {
           console.log(result.user);
           form.reset() ;
           toast.success('Login Success Fully !') ;
+
+          const userInfo = {
+            name : result?.user?.displayName ,
+            email : result?.user?.email ,
+            image: result?.user?.photoURL,
+            designation: "sales assistant",
+            role: 'employee',
+            bank_account_no: 0 ,
+            salary: 0 ,
+            pay : 0 ,
+            Verified : false ,
+            details : "Employee details",
+          };
+  
+          axiosCommon.put("/users", userInfo).then((res) => {
+            console.log(res.data);
+          });
 
           setTimeout(() => {
             if(location.state){
@@ -70,15 +89,22 @@ const Login = () => {
         console.log(result);  
         toast.success('Login Success Fully !') ;
         
-        // const userInfo = {
-        //   name : result.user.displayName ,
-        //   email : result.user.email ,
-        // }
+        const userInfo = {
+          name : result?.user?.displayName ,
+          email : result?.user?.email ,
+          image: result?.user?.photoURL,
+          designation: "sales assistant",
+          role: 'employee',
+          bank_account_no: 0 ,
+          salary: 0 ,
+          pay : 0 ,
+          Verified : false ,
+          details : "Employee details",
+        };
 
-        // axiosCommon.post('/users' , userInfo)
-        //   .then(res => {
-        //     console.log(res.data);
-        // })
+        axiosCommon.put("/users", userInfo).then((res) => {
+          console.log(res.data);
+        });
         
         setTimeout(() => {
           if(location.state){

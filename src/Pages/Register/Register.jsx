@@ -1,4 +1,3 @@
-
 import {
   Card,
   CardHeader,
@@ -7,6 +6,9 @@ import {
   Typography,
   Input,
   Checkbox,
+  Select,
+  Option,
+  Button,
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,18 +16,23 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import useAuth from "../../Hooks/useAuth";
-import axios from 'axios'
+import axios from "axios";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
+import useAxiosCommon from "../../Hooks/useAxiosCommon";
 
-const key = import.meta.env.VITE_IMAGE_HOISTING_API_KEY ;
-const apiUrl = `https://api.imgbb.com/1/upload?key=${key}` ;
+const key = import.meta.env.VITE_IMAGE_HOISTING_API_KEY;
+const apiUrl = `https://api.imgbb.com/1/upload?key=${key}`;
 
 const Register = () => {
-  const { createUser, setProfile } = useAuth();
+  const { createUser, setProfile, githubLogin, googleLogin } = useAuth();
   const navigate = useNavigate();
   const [remember, setRemember] = useState(false);
   const [errorText, setErrorText] = useState("");
   const [passInt, setPassInt] = useState("");
   const [eye, setEye] = useState(false);
+  const [role, setRole] = useState("employee");
+  const axiosCommon = useAxiosCommon();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,57 +42,126 @@ const Register = () => {
     const image = form.image.files[0];
     const email = form.email.value;
     const pass = form.password.value;
-    
-    const formData = new FormData() ;
-    formData.append('image' , image) ;
 
-    const {data : imageUrl} = await axios.post(apiUrl , formData , {headers : {"content-type" : "multipart/form-data"}}) ;
-    console.log(imageUrl.data.display_url);
+    const formData = new FormData();
+    formData.append("image", image);
 
-    if(remember && imageUrl?.success){
-        if(passInt.length >= 6){
-          if(/[a-z]/.test(passInt) && /[A-Z]/.test(passInt)){
-            createUser(email , pass)
-            .then((result) => {
-              console.log(result.user);
-              toast.success('Register Success Fully !') ;
-              form.reset() ;
+    const { data: imageUrl } = await axios.post(apiUrl, formData, {
+      headers: { "content-type": "multipart/form-data" },
+    });
 
-            //   const userInfo = {
-            //     name ,
-            //     email ,
-            //   }
+    if (remember && imageUrl?.success) {
+      if (passInt.length >= 6) {
+        if (/[!@#$%^&*(),.?":{}|<>]/.test(passInt)) {
+          if (/[a-z]/.test(passInt) && /[A-Z]/.test(passInt)) {
+            createUser(email, pass)
+              .then((result) => {
+                console.log(result.user);
+                toast.success("Register Success Fully !");
+                form.reset();
 
-            //   axiosCommon.post('/users' , userInfo)
-            //   .then(res => {
-            //     console.log(res.data);
-            //   })
+                const userInfo = {
+                  name,
+                  email,
+                  image: imageUrl?.data?.display_url,
+                  designation: "sales assistant",
+                  role: role,
+                  bank_account_no: 0,
+                  salary: 0 ,
+                  pay : 0 ,
+                  Verified : false ,
+                  details : "Employee details",
+                };
 
-              setTimeout(() => {
-                navigate('/')
-              }, 1000);
-              setProfile(name , imageUrl?.data?.display_url) ;
-            })
-            .catch((error) => {
-              console.log(error.message);
-              if(error.message.includes('Firebase: Error (auth/email-already-in-use).')){
-                toast.error('This Email Already in Use !') ;
-              }
-            })
+                axiosCommon.put("/users", userInfo).then((res) => {
+                  console.log(res.data);
+                });
+
+                setTimeout(() => {
+                  navigate("/");
+                }, 1000);
+                setProfile(name, imageUrl?.data?.display_url);
+              })
+              .catch((error) => {
+                console.log(error.message);
+                if (
+                  error.message.includes(
+                    "Firebase: Error (auth/email-already-in-use)."
+                  )
+                ) {
+                  toast.error("This Email Already in Use !");
+                }
+              });
+          } else {
+            toast.warning(
+              "Your Password Have UpperCase or LowerCase Charecter's !"
+            );
           }
-          else{
-            toast.error("Your Password Have UpperCase or LowerCase Charecter's !") ;
-          }
+        } else {
+          toast.warning("Your password must have a specail charecter !");
         }
-        else{
-          toast.error("Your Password must have 6 Charecter's !") ;
-        }
-        }
-        else{
-            setErrorText('Please Accept Our Turms & Condition !') ;
-        }
+      } else {
+        toast.warning("Your Password must have 6 Charecter's !");
+      }
+    } else {
+      setErrorText("Please Accept Our Turms & Condition !");
+    }
+  };
 
-    };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result);
+        toast.success("Login Success Fully !");
+
+        const userInfo = {
+          name : result?.user?.displayName ,
+          email : result?.user?.email ,
+          image: result?.user?.photoURL,
+          designation: "sales assistant",
+          role: role,
+          bank_account_no: 0 ,
+          salary: 0 ,
+          pay : 0 ,
+          Verified : false ,
+          details : "Employee details",
+        };
+
+        axiosCommon.put("/users", userInfo).then((res) => {
+          console.log(res.data);
+        });
+
+        setTimeout(() => {
+          if (location.state) {
+            navigate(location.state);
+          } else {
+            navigate("/");
+          }
+        }, 1000);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        console.log(result);
+        toast.success("Login Success Fully !");
+
+        setTimeout(() => {
+          if (location.state) {
+            navigate(location.state);
+          } else {
+            navigate("/");
+          }
+        }, 1000);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleChange = (e) => {
     setPassInt(e.target.value);
@@ -143,7 +219,17 @@ const Register = () => {
                 required
               />
             </div>
-            
+
+            <Select
+              value={role}
+              onChange={(e) => setRole(e)}
+              label="Select The Role"
+              required
+            >
+              <Option value="employee">Employee</Option>
+              <Option value="hr">HR</Option>
+            </Select>
+
             <div className="-ml-2.5">
               <Checkbox
                 onClick={() => setRemember(!remember)}
@@ -165,6 +251,24 @@ const Register = () => {
               value={"Sign Up"}
             />
           </form>
+
+          <div className="divider">OR</div>
+
+          <Button
+            onClick={handleGoogleLogin}
+            className="text-lg gap-3 justify-center flex items-center bg-transparent text-black border border-[#343434] hover:shadow-none"
+          >
+            <FcGoogle className="text-2xl" />
+            <p className="text-base">Login With Google</p>
+          </Button>
+
+          <Button
+            onClick={handleGithubLogin}
+            className="text-lg gap-3 justify-center flex items-center bg-transparent text-black border border-[#343434] hover:shadow-none"
+          >
+            <FaGithub className="text-2xl" />
+            <p className="text-base">Login With GitHub</p>
+          </Button>
         </CardBody>
 
         <CardFooter className="pt-0">

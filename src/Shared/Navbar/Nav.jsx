@@ -29,7 +29,7 @@ const Nav = () => {
             className="p-1 font-normal gro"
           >
             <NavLink to={'/'} className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "underline font-bold" : ""
+              isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
             }>
               Home
             </NavLink>
@@ -40,7 +40,7 @@ const Nav = () => {
             className="p-1 font-normal gro"
           >
             <NavLink to={'/contactUs'} className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "underline font-bold" : ""
+              isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
             }>
               Contact Us
             </NavLink>
@@ -51,7 +51,7 @@ const Nav = () => {
             className="p-1 font-normal gro"
           >
             <NavLink to={'/dashBoard'} className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "underline font-bold" : ""
+              isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
             }>
               DashBoard
             </NavLink>
@@ -65,7 +65,7 @@ const Nav = () => {
     }
 
     return (
-        <div className="sticky top-0 z-10">
+        <div className="sticky top-0 z-10 ">
             <Navbar className="sticky top-0 z-10 h-max max-w-screen-2xl mx-auto border-none bg-[#bfbfff] shadow-none border-2 rounded-none px-4 py-2 lg:px-4 lg:py-1 my-0">
 
                 <div className="flex items-center justify-between text-neutral-950">
