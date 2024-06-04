@@ -9,6 +9,7 @@ import Private from "../Private/Private";
 import WorkSheet from "../Pages/DashBoard/Employee/WorkSheet/WorkSheet";
 import PaymentHistory from "../Pages/DashBoard/Employee/Payment/PaymentHistory";
 import HrPrivate from "../Private/HrPrivate";
+import EmployeeList from "../Pages/DashBoard/Moderetor/EmployeeList";
 
 const router = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
             },
             {
                 path : 'employeeList' ,
-                element : <HrPrivate><PaymentHistory /></HrPrivate> ,
+                element : <HrPrivate><EmployeeList /></HrPrivate> ,
             },
         ]
     }

@@ -18,21 +18,25 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import useAxiosCommon from "../../Hooks/useAxiosCommon";
 
 const key = import.meta.env.VITE_IMAGE_HOISTING_API_KEY;
 const apiUrl = `https://api.imgbb.com/1/upload?key=${key}`;
 
 const Register = () => {
-  const { createUser, setProfile, githubLogin, googleLogin } = useAuth();
+
+  const { createUser, setProfile, googleLogin } = useAuth();
   const navigate = useNavigate();
   const [remember, setRemember] = useState(false);
   const [errorText, setErrorText] = useState("");
   const [passInt, setPassInt] = useState("");
   const [eye, setEye] = useState(false);
   const [role, setRole] = useState("employee");
+  const [designation, setDesignation] = useState("Sales Assistant");
   const axiosCommon = useAxiosCommon();
+
+  const bank = ['4000056655665556' , '5555555555554444' , '5105105105105100' , '371449635398431'] ;
+  const math = Math.floor(Math.random() * 4) ;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +46,9 @@ const Register = () => {
     const image = form.image.files[0];
     const email = form.email.value;
     const pass = form.password.value;
+    const salary = parseInt(form.salary.value);
+    const designation = form.designation.value;
+    const bank_account_no = form.bank.value;
 
     const formData = new FormData();
     formData.append("image", image);
@@ -64,10 +71,10 @@ const Register = () => {
                   name,
                   email,
                   image: imageUrl?.data?.display_url,
-                  designation: "sales assistant",
+                  designation: designation,
                   role: role,
-                  bank_account_no: 0,
-                  salary: 0 ,
+                  bank_account_no: bank_account_no,
+                  salary: salary ,
                   pay : 0 ,
                   Verified : false ,
                   details : "Employee details",
@@ -120,7 +127,7 @@ const Register = () => {
           image: result?.user?.photoURL,
           designation: "sales assistant",
           role: role,
-          bank_account_no: 0 ,
+          bank_account_no: bank[math] ,
           salary: 0 ,
           pay : 0 ,
           Verified : false ,
@@ -144,25 +151,6 @@ const Register = () => {
       });
   };
 
-  const handleGithubLogin = () => {
-    githubLogin()
-      .then((result) => {
-        console.log(result);
-        toast.success("Login Success Fully !");
-
-        setTimeout(() => {
-          if (location.state) {
-            navigate(location.state);
-          } else {
-            navigate("/");
-          }
-        }, 1000);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const handleChange = (e) => {
     setPassInt(e.target.value);
   };
@@ -171,7 +159,7 @@ const Register = () => {
     <div
       className={`min-h-[70vh] my-20 flex flex-col items-center justify-center`}
     >
-      <Card className="w-96 pt-11 gro shadow-none border my-20 lg:my-0">
+      <Card className=" pt-11 gro shadow-none border my-20 lg:my-0">
         <CardHeader
           variant="gradient"
           color="gray"
@@ -183,7 +171,7 @@ const Register = () => {
         </CardHeader>
 
         <CardBody className="flex flex-col gap-4">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit} className="grid grid-cols-2 grid-rows-2 gap-4">
             <Input required type="text" name="name" label="Name" size="lg" />
 
             <div className="border border-[#B0BEC5] p-0 rounded-md">
@@ -230,6 +218,21 @@ const Register = () => {
               <Option value="hr">HR</Option>
             </Select>
 
+            <Input name="bank" type="number" label="Bank Account No"/>
+            <Input name="salary" type="number" label="Salary"/>
+
+            <Select
+              value={designation}
+              onChange={(e) => setDesignation(e)}
+              name="designation"
+              label="Designation"
+              required
+            >
+              <Option value="Sales Assistant">Sales Assistant</Option>
+              <Option value=" Social Media executive"> Social Media executive</Option>
+              <Option value="Digital Marketer">Digital Marketer</Option>
+            </Select>
+
             <div className="-ml-2.5">
               <Checkbox
                 onClick={() => setRemember(!remember)}
@@ -245,11 +248,13 @@ const Register = () => {
               )}
             </div>
 
-            <input
-              type="submit"
-              className="w-full btn text-gray-800 btn-outline hover:bg-[#393939]"
-              value={"Sign Up"}
-            />
+              <div className="col-span-2">
+                <input  
+                  type="submit"
+                  className="w-full btn text-gray-800 btn-outline hover:bg-[#393939]"
+                  value={"Sign Up"}
+                />
+              </div>
           </form>
 
           <div className="divider">OR</div>
@@ -262,13 +267,6 @@ const Register = () => {
             <p className="text-base">Login With Google</p>
           </Button>
 
-          <Button
-            onClick={handleGithubLogin}
-            className="text-lg gap-3 justify-center flex items-center bg-transparent text-black border border-[#343434] hover:shadow-none"
-          >
-            <FaGithub className="text-2xl" />
-            <p className="text-base">Login With GitHub</p>
-          </Button>
         </CardBody>
 
         <CardFooter className="pt-0">

@@ -29,6 +29,9 @@ const Login = () => {
     const [errorText , setErrorText] = useState(false) ;
     const axiosCommon = useAxiosCommon() ;
 
+    const bank = ['4000056655665556' , '5555555555554444' , '5105105105105100' , '371449635398431'] ;
+    const math = Math.floor(Math.random() * 4) ;
+
     const handleSubmit = (e) => {
       e.preventDefault() ;
   
@@ -49,7 +52,7 @@ const Login = () => {
             image: result?.user?.photoURL,
             designation: "sales assistant",
             role: 'employee',
-            bank_account_no: 0 ,
+            bank_account_no: bank[math] ,
             salary: 0 ,
             pay : 0 ,
             Verified : false ,
@@ -95,7 +98,7 @@ const Login = () => {
           image: result?.user?.photoURL,
           designation: "sales assistant",
           role: 'employee',
-          bank_account_no: 0 ,
+          bank_account_no: bank[math] ,
           salary: 0 ,
           pay : 0 ,
           Verified : false ,
