@@ -77,7 +77,6 @@ const Register = () => {
                   salary: salary ,
                   pay : 0 ,
                   Verified : false ,
-                  details : "Employee details",
                 };
 
                 axiosCommon.put("/users", userInfo).then((res) => {
@@ -131,7 +130,6 @@ const Register = () => {
           salary: 0 ,
           pay : 0 ,
           Verified : false ,
-          details : "Employee details",
         };
 
         axiosCommon.put("/users", userInfo).then((res) => {

@@ -11,15 +11,16 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "../../../Shared/CheckOutForm/CheckOutForm";
 import { useState } from "react";
 import {ToastContainer, toast} from 'react-toastify'
+import { Link } from "react-router-dom";
 
 const TABLE_HEAD = [
   "Name",
   "Email",
   "Bank Account",
   "Salary",
-  "Details",
   "Pay",
   "Verified",
+  "Details",
 ];
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_API_KEY);
@@ -156,18 +157,6 @@ const EmployeeList = () => {
                 </td>
 
                 <td className="p-4">
-                  <Typography
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="blue-gray"
-                    className="font-medium"
-                  >
-                    {user.details}
-                  </Typography>
-                </td>
-
-                <td className="p-4">
                   <Button
                     disabled={!user.Verified}
                     onClick={() =>{
@@ -185,19 +174,28 @@ const EmployeeList = () => {
                   {user.Verified ? (
                     <Button
                       onClick={() => handleToggole(user)}
-                      className="bg-transparent border border-[#B0BEC5] shadow-none"
+                      className="bg-transparent border border-[#BFBFFF] shadow-none"
                     >
                       <MdOutlineDoneAll className="text-lg text-green-600" />
                     </Button>
                   ) : (
                     <Button
                       onClick={() => handleToggole(user)}
-                      className="bg-transparent border border-[#B0BEC5] shadow-none"
+                      className="bg-transparent border border-[#BFBFFF] shadow-none"
                     >
                       <RxCross2 className="text-lg text-red-900" />
                     </Button>
                   )}
                 </td>
+
+                <td className="p-4">
+                  <Link to={`/dashBoard/employee/${user.email}`}>
+                    <Button className="bg-transparent text-neutral-800 gro capitalize text-xs shadow-none border-[#BFBFFF]  border">
+                      Details
+                    </Button>
+                  </Link>
+                </td>
+
               </tr>
             ))}
           </tbody>

@@ -56,7 +56,6 @@ const Login = () => {
             salary: 0 ,
             pay : 0 ,
             Verified : false ,
-            details : "Employee details",
           };
   
           axiosCommon.put("/users", userInfo).then((res) => {
@@ -102,7 +101,6 @@ const Login = () => {
           salary: 0 ,
           pay : 0 ,
           Verified : false ,
-          details : "Employee details",
         };
 
         axiosCommon.put("/users", userInfo).then((res) => {

@@ -83,7 +83,7 @@ const Nav = () => {
                         <div className="flex items-center gap-x-1">
                           {user ? (
                             <div className="flex items-center justify-between">
-                                <div className="dropdown dropdown-hover">
+                                <div className="dropdown dropdown-hover z-30">
                                   <div
                                     tabIndex={0}
                                     role="button"
@@ -97,7 +97,7 @@ const Nav = () => {
                                   </div>
                                   <div
                                     tabIndex={0}
-                                    className="dropdown-content z-[1] menu p-2 shadow bg-[#adadff] rounded-box w-52"
+                                    className="dropdown-content z-50 menu p-2 shadow bg-[#adadff] rounded-box w-52"
                                   >
                                     <h1 className="m-1 border p-1 rounded-md font-semibold">
                                       {user?.displayName}

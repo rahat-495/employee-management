@@ -6,7 +6,7 @@ import useRole from "../Hooks/useRole";
 const HrPrivate = ({children}) => {
 
     const [role , isLoading] = useRole() ;
-    const {user , loading} = useAuth() ;
+    const {user , loading , logOut} = useAuth() ;
     const location = useLocation() ;
 
     if(loading || isLoading){
@@ -17,6 +17,7 @@ const HrPrivate = ({children}) => {
         return children ;
     }
 
+    logOut() ;
     return <Navigate state={location.pathname} to="/login"></Navigate>
 };
 
