@@ -76,7 +76,7 @@ const Register = () => {
                   bank_account_no: bank_account_no,
                   salary: salary ,
                   pay : 0 ,
-                  Verified : false ,
+                  Verified : role === 'hr' ?  true : false ,
                 };
 
                 axiosCommon.put("/users", userInfo).then((res) => {

@@ -11,6 +11,9 @@ import PaymentHistory from "../Pages/DashBoard/Employee/Payment/PaymentHistory";
 import HrPrivate from "../Private/HrPrivate";
 import EmployeeList from "../Pages/DashBoard/Moderetor/EmployeeList";
 import EmployeeDetails from "../Pages/DashBoard/Moderetor/EmployeeDetails";
+import Progress from "../Pages/DashBoard/Moderetor/Progress";
+import AdminPrivate from "../Private/AdminPrivate";
+import AllEmployeeList from "../Pages/DashBoard/Admin/AllEmployeeList";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +53,14 @@ const router = createBrowserRouter([
             {
                 path : 'employee/:email' ,
                 element : <HrPrivate><EmployeeDetails /></HrPrivate> ,
+            },
+            {
+                path : 'progress' ,
+                element : <HrPrivate><Progress /></HrPrivate> ,
+            },
+            {
+                path : 'all-employee-list' ,
+                element : <AdminPrivate><AllEmployeeList /></AdminPrivate> ,
             },
         ]
     }

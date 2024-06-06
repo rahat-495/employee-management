@@ -58,6 +58,7 @@ const WorkSheet = () => {
             task : data?.task ,
             hour : parseInt(data?.hour) ,
             date : startDate ,
+            month : (startDate.getMonth() + 1) ,
         }
         await mutatePost(workSheet) ;
     }
