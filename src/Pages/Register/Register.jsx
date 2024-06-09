@@ -19,6 +19,7 @@ import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import useAxiosCommon from "../../Hooks/useAxiosCommon";
+import Swal from "sweetalert2";
 
 const key = import.meta.env.VITE_IMAGE_HOISTING_API_KEY;
 const apiUrl = `https://api.imgbb.com/1/upload?key=${key}`;
@@ -76,7 +77,8 @@ const Register = () => {
                   bank_account_no: bank_account_no,
                   salary: salary ,
                   pay : 0 ,
-                  Verified : role === 'hr' ?  true : false ,
+                  Verified : role === 'hr' ?  true : false ,           
+                  isFired : false ,
                 };
 
                 axiosCommon.put("/users", userInfo).then((res) => {
@@ -86,6 +88,7 @@ const Register = () => {
                 setTimeout(() => {
                   navigate("/");
                 }, 1000);
+
                 setProfile(name, imageUrl?.data?.display_url);
               })
               .catch((error) => {
@@ -116,7 +119,7 @@ const Register = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((result) => {
+      .then( async (result) => {
         console.log(result);
         toast.success("Login Success Fully !");
 
@@ -129,8 +132,19 @@ const Register = () => {
           bank_account_no: bank[math] ,
           salary: 0 ,
           pay : 0 ,
-          Verified : false ,
+          Verified : false ,          
+          isFired : false ,
         };
+
+        const {data} = await axiosCommon.get(`/users/${result?.user?.email}`) ;
+        if(data?.isFired){
+          Swal.fire({
+            title: "Opps !",
+            html : "You are fired you can't <br/> login this account any more !" ,
+            icon: "error"
+          });
+          return ;
+        }
 
         axiosCommon.put("/users", userInfo).then((res) => {
           console.log(res.data);

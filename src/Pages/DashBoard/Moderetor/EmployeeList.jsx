@@ -90,7 +90,7 @@ const EmployeeList = () => {
   if (loading || isLoading) return <span className="loading loading-spinner text-primary"></span>;
 
   return (
-    <div className="ml-48 my-20">
+    <div className=" my-20">
       <Card className="h-full w-3/4 mx-auto overflow-auto shadow-none border border-[#B0BEC5]">
         <table className="w-full min-w-max table-auto text-left">
           <thead>

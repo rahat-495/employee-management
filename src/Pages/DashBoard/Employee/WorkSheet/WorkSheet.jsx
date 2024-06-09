@@ -87,7 +87,7 @@ const WorkSheet = () => {
     if(loading || isLoading || isPending) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-primary"></span> ;
 
     return (
-        <div className="flex flex-col gap-3 grid-rows-1 ml-48 my-20">
+        <div className="flex flex-col gap-3 grid-rows-1  my-20">
             
             <div className="w-3/4 mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -121,8 +121,8 @@ const WorkSheet = () => {
             </div>
 
             <div className="w-3/4 mx-auto mt-5">
-                <div className="overflow-x-auto rounded-lg border-[#B0BEC5] border">
-                    <table className="table table-zebra">
+                <div className="overflow-x-auto max-h-[70vh] overflow-y-auto rounded-lg border-[#B0BEC5] border">
+                    <table className="table table-zebra h-4/5">
                         {/* head */}
                         <thead>
                             <tr>
@@ -133,7 +133,7 @@ const WorkSheet = () => {
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="h-4/5">
 
                             {
                                 workSheets.map((item , index) => 

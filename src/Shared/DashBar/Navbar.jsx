@@ -23,18 +23,6 @@ const Navbar = () => {
               All Employee List
             </NavLink>
           </Typography>
-
-          <Typography as="li" className="p-1 font-normal gro">
-            <NavLink
-              to={"/dashBoard/paymentHistory"}
-              end
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
-              }
-            >
-              Payment History
-            </NavLink>
-          </Typography>
         </>
       }
 
@@ -94,7 +82,7 @@ const Navbar = () => {
       }
 
 
-    </div>
+  </div>
   );
 };
 

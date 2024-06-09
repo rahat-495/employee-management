@@ -1,3 +1,4 @@
+
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 import useAuth from "./useAuth";
@@ -14,6 +15,7 @@ const useRole = () => {
             return data ;
         }
     })
+    // console.log(role?.role);
 
     return [ role , isLoading , refetch ] ;
 };

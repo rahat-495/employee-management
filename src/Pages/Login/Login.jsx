@@ -18,10 +18,11 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosCommon from "../../Hooks/useAxiosCommon";
+import Swal from "sweetalert2";
 
 const Login = () => {
   
-    const {signIn , googleLogin , githubLogin , user} = useAuth() ;
+    const {signIn , googleLogin , githubLogin , user , logOut} = useAuth() ;
     const location = useLocation() ;
     const navigate = useNavigate() ;
     const [eye , setEye] = useState(false) ;
@@ -32,13 +33,23 @@ const Login = () => {
     const bank = ['4000056655665556' , '5555555555554444' , '5105105105105100' , '371449635398431'] ;
     const math = Math.floor(Math.random() * 4) ;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault() ;
   
       const form = e.target ;
       const email = form.email.value ;
       const pass = form.password.value ;
   
+      const {data} = await axiosCommon.get(`/users/${email}`)
+      if(data?.isFired){
+        Swal.fire({
+          title: "Opps !",
+          icon: "error",
+          html : "You are fired you can't <br/> login this account any more !"
+        });
+        return ;
+      }
+
       if(remember){
         signIn(email , pass) 
         .then((result) => {
@@ -55,7 +66,8 @@ const Login = () => {
             bank_account_no: bank[math] ,
             salary: 0 ,
             pay : 0 ,
-            Verified : false ,
+            Verified : false ,          
+            isFired : false ,
           };
   
           axiosCommon.put("/users", userInfo).then((res) => {
@@ -86,7 +98,7 @@ const Login = () => {
   
     const handleGoogleLogin = () => {
       googleLogin()
-      .then((result) => {
+      .then( async (result) => {
 
         console.log(result);  
         toast.success('Login Success Fully !') ;
@@ -100,8 +112,20 @@ const Login = () => {
           bank_account_no: bank[math] ,
           salary: 0 ,
           pay : 0 ,
-          Verified : false ,
+          Verified : false ,          
+          isFired : false ,
         };
+
+        const {data} = await axiosCommon.get(`/users/${result?.user?.email}`)
+        if(data?.isFired){
+          logOut() ;
+          Swal.fire({
+            title: "Opps !",
+            html : "You are fired you can't <br/> login this account any more !" ,
+            icon: "error"
+          });
+          return ;
+        }
 
         axiosCommon.put("/users", userInfo).then((res) => {
           console.log(res.data);

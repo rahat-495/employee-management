@@ -14,6 +14,8 @@ import EmployeeDetails from "../Pages/DashBoard/Moderetor/EmployeeDetails";
 import Progress from "../Pages/DashBoard/Moderetor/Progress";
 import AdminPrivate from "../Private/AdminPrivate";
 import AllEmployeeList from "../Pages/DashBoard/Admin/AllEmployeeList";
+import DashPrivate from "../Private/DashPrivate";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path : '/' ,
                 element : <Home />
+            },
+            {
+                path : '/contactUs' ,
+                element : <ContactUs />
             },
             {
                 path : '/register' ,
@@ -36,7 +42,7 @@ const router = createBrowserRouter([
     },
     {
         path : '/dashBoard' ,
-        element : <Private><DashRoot /></Private> ,
+        element : <DashPrivate><DashRoot /></DashPrivate> ,
         children : [
             {
                 path : 'workSheet' ,

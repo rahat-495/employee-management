@@ -17,7 +17,7 @@ const PaymentHistory = () => {
     })
 
     return (
-        <div className="ml-48 my-28">
+        <div className="my-28">
             <div className="overflow-x-hidden rounded-lg max-h-96 overflow-y-auto w-3/4 mx-auto border-[#B0BEC5] border">
                     <table className="table table-zebra ">
                         {/* head */}

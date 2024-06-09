@@ -24,6 +24,7 @@ const Progress = () => {
             return data ;
         }
     })
+    console.log(allWorks);
 
     const handleName = (e) => {
         setName(e);
@@ -36,7 +37,7 @@ const Progress = () => {
     }
 
     return (
-        <div className="ml-48 my-14">
+        <div className=" my-14">
             
             <div className="w-3/4 mx-auto grid grid-cols-3 gap-5">
 
