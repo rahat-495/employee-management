@@ -3,7 +3,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
-import { Button } from '@material-tailwind/react';
 
 const Banner = () => {
     return (

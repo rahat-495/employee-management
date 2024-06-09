@@ -9,13 +9,23 @@ import {
 import { useEffect, useState } from "react";
 import {Link, NavLink} from 'react-router-dom' ;
 import useAuth from "../../Hooks/useAuth";
-import useRole from "../../Hooks/useRole";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import {useQuery} from '@tanstack/react-query'
+
 const Nav = () => {
   
-    const [role] = useRole() ;
     const {user , logOut} = useAuth() ;
     const [openNav, setOpenNav] = useState(false);
+    const axiosSecure = useAxiosSecure() ;
 
+    const { data : role} = useQuery({
+        queryKey : ['userRole' , user] ,
+        queryFn : async () => {
+            const {data} = await axiosSecure.get(`/userRole/${user?.email}`) ;
+            return data ;
+        }
+    })
+  
     useEffect(() => {
         window.addEventListener(
         "resize",
@@ -148,12 +158,14 @@ const Nav = () => {
             <Navbar className="sticky top-0 z-10 h-max max-w-screen-2xl mx-auto border-none bg-[#bfbfff] shadow-none border-2 rounded-none px-4 py-2 lg:px-4 lg:py-1 my-0">
 
                 <div className="flex items-center justify-between text-neutral-950">
-                    <Typography
-                        className="mr-4 w-28 gro text-xl cursor-pointer py-1.5 font-medium"
-                    >
-                        Bistro Boss 
-                        Rasturent
-                    </Typography>
+                    <div className="flex items-center gap-3">
+                      <img className="w-12 h-12 rounded-full" src="https://static.vecteezy.com/system/resources/previews/007/121/544/non_2x/customer-retention-and-returning-clients-line-icon-vector.jpg" alt="" />
+                      <Typography
+                          className="mr-4 w-28 gro text-xl cursor-pointer py-1.5 font-medium"
+                      >
+                          EmployeeFlow
+                      </Typography>
+                    </div>
 
                     <div className="flex items-center gap-4 text-white">
 

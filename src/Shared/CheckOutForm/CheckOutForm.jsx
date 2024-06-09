@@ -4,6 +4,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import moment from 'moment';
 
 const CheckOutForm = ({ userData, month, year }) => {
 
@@ -75,9 +76,14 @@ const CheckOutForm = ({ userData, month, year }) => {
         const modal = document.getElementById("my_modal_2");
         modal.close();
 
+        const getMonthName = (monthNumber) => {
+          return moment().month(monthNumber).format('MMMM') ;
+        }
+
         const dataObj = {
           month: month,
           year: year,
+          monthYear : `${getMonthName(month - 1)} / ${year}` ,
           name: userData?.name,
           email: userData?.email,
           image: userData?.image,

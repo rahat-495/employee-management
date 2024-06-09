@@ -43,8 +43,8 @@ const EmployeeDetails = () => {
                     data={paymentsData}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis label={{value: 'Month' , position : 'insideBottom' , offset: 0 , angle: 0}} dataKey="month" />
-                        <YAxis label={{value: 'Salary' , position : 'insideBottom' , offset: 220 , angle: -90 , dx: -20}} dataKey="amount" tickCount={12} />
+                        <XAxis dataKey="monthYear" />
+                        <YAxis label={{value: 'Salary' , position : 'insideBottom' , offset: 220 , angle: -90 , dx: -22}} tickFormatter={(value) => `$${value}`} tickCount={12} dataKey="amount" />
                         <Tooltip />
                         <Bar dataKey="amount" fill="#8884d8" label={{ position: 'top' }}>
                             {paymentsData?.map((entry, index) => (

@@ -15,7 +15,6 @@ const useRole = () => {
             return data ;
         }
     })
-    // console.log(role?.role);
 
     return [ role , isLoading , refetch ] ;
 };

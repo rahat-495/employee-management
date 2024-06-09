@@ -106,7 +106,7 @@ const WorkSheet = () => {
                         <div className="w-full">
                             <DatePicker 
                                 required 
-                                className="border px-3 py-[7px] border-[#B0BEC5] items-center w-[140%] justify-center rounded-lg" 
+                                className="border px-3 py-[7px] border-[#B0BEC5] items-center w-[155%] justify-center rounded-lg" 
                                 selected={startDate} 
                                 onChange={(date) => setStartDate(date)} 
                                 dateFormat="yyyy/MM/dd"

@@ -48,7 +48,6 @@ const Register = () => {
     const email = form.email.value;
     const pass = form.password.value;
     const salary = parseInt(form.salary.value);
-    const designation = form.designation.value;
     const bank_account_no = form.bank.value;
 
     const formData = new FormData();
@@ -230,8 +229,8 @@ const Register = () => {
               <Option value="hr">HR</Option>
             </Select>
 
-            <Input name="bank" type="number" label="Bank Account No"/>
-            <Input name="salary" type="number" label="Salary"/>
+            <Input required name="bank" type="number" label="Bank Account No"/>
+            <Input required name="salary" type="number" label="Salary"/>
 
             <Select
               value={designation}
