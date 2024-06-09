@@ -3,8 +3,35 @@ import { IoCall } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { Input, Textarea } from "@material-tailwind/react";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosCommon from "../../Hooks/useAxiosCommon";
+import Swal from "sweetalert2";
 
 const ContactUs = () => {
+
+    const {user} = useAuth() ;
+    const axiosCommon = useAxiosCommon() ;
+
+    const handleSubmit = async (e) => {
+        e.preventDefault() ;
+
+        const form = e.target ;
+        const name = form.name.value ;
+        const email = form.email.value ;
+        const message = form.message.value ;
+
+        const messageData = {name , email , message} ;
+        const {data} = await axiosCommon.post('/message' , messageData) ;
+        if(data?.insertedId){
+            Swal.fire({
+                title: "Success !",
+                text: "Your message send success fully !",
+                icon: "success"
+            });
+            form.reset() ;
+        }
+    }
+
     return (
         <div className="flex flex-col items-center justify-center gap-5 w-full min-h-[70vh]">
             
@@ -41,12 +68,12 @@ const ContactUs = () => {
                 </div>
 
                 <div className="w-full">
-                    <form className="flex flex-col gap-5">
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                         <div className="flex flex-col items-center gap-5">
-                            <Input className="" type="text" label="Name" required/>
-                            <Input className="" type="email" label="Email" required/>
+                            <Input defaultValue={user?.displayName} name="name" className="" type="text" label="Name" required/>
+                            <Input defaultValue={user?.email} name="email" className="" type="email" label="Email" required/>
                         </div>
-                        <Textarea required label="Enter Your Message"/>
+                        <Textarea name="message" required label="Enter Your Message"/>
                         <input type="submit" value={'Send'} className="btn btn-outline hover:bg-[#E91E63]"/>
                     </form>
                 </div>

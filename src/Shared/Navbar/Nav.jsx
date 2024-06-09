@@ -57,93 +57,107 @@ const Nav = () => {
               Contact Us
             </NavLink>
           </Typography>
-
+            
           <div className="dropdown dropdown-hover">
             <div tabIndex={0} role="button" className="m-1">
-            <Typography
-              className="p-1 font-normal gro"
-            >
-              <NavLink to={'/dashBoard'} className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
-              }>
-                DashBoard
-              </NavLink>
-            </Typography>
+              <Typography
+                className="p-1 font-normal gro"
+              >
+                <NavLink to={'/dashBoard'} className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
+                }>
+                  DashBoard
+                </NavLink>
+              </Typography>
             </div>
-            <ul tabIndex={0} className="dropdown-content z-[10] menu p-2 shadow bg-[#adadff] rounded-box w-52">
-
             {
-                role?.role === 'admin' && <>
-                  <Typography as="li" className="p-1 font-normal gro">
-                    <NavLink
-                      to={"/dashBoard/all-employee-list"}
-                      end
-                      className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
-                      }
-                    >
-                      All Employee List
-                    </NavLink>
-                  </Typography>
-                </>
-              }
+              user?.email &&
+              <ul tabIndex={0} className="dropdown-content z-[10] menu p-2 shadow bg-[#adadff] rounded-box w-52">
 
               {
-                role?.role === 'hr' && <>
-                  <Typography as="li" className="p-1 font-normal gro">
-                    <NavLink
-                      to={"/dashBoard/employeeList"}
-                      className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
-                      }
-                    >
-                      Employee List
-                    </NavLink>
-                  </Typography>
+                  role?.role === 'admin' && <>
+                    <Typography as="li" className="p-1 font-normal gro">
+                      <NavLink
+                        to={"/dashBoard/all-employee-list"}
+                        end
+                        className={({ isActive, isPending }) =>
+                          isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
+                        }
+                      >
+                        All Employee List
+                      </NavLink>
+                    </Typography>
+                    <Typography as="li" className="p-1 font-normal gro">
+                      <NavLink
+                        to={"/dashBoard/messages"}
+                        end
+                        className={({ isActive, isPending }) =>
+                          isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
+                        }
+                      >
+                        Messages
+                      </NavLink>
+                    </Typography>
+                  </>
+                }
 
-                  <Typography as="li" className="p-1 font-normal gro">
-                    <NavLink
-                      to={"/dashBoard/progress"}
-                      end
-                      className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
-                      }
-                    >
-                      Progress
-                    </NavLink>
-                  </Typography>
-                </>
-              }
+                {
+                  role?.role === 'hr' && <>
+                    <Typography as="li" className="p-1 font-normal gro">
+                      <NavLink
+                        to={"/dashBoard/employeeList"}
+                        className={({ isActive, isPending }) =>
+                          isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
+                        }
+                      >
+                        Employee List
+                      </NavLink>
+                    </Typography>
 
-              {
-                role?.role === 'employee' && <>
-                  <Typography as="li" className="p-1 font-normal gro">
-                    <NavLink
-                      to={"/dashBoard/workSheet"}
-                      end
-                      className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
-                      }
-                    >
-                      Work Sheet
-                    </NavLink>
-                  </Typography>
+                    <Typography as="li" className="p-1 font-normal gro">
+                      <NavLink
+                        to={"/dashBoard/progress"}
+                        end
+                        className={({ isActive, isPending }) =>
+                          isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
+                        }
+                      >
+                        Progress
+                      </NavLink>
+                    </Typography>
+                  </>
+                }
 
-                  <Typography as="li" className="p-1 font-normal gro">
-                    <NavLink
-                      to={"/dashBoard/paymentHistory"}
-                      end
-                      className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
-                      }
-                    >
-                      Payment History
-                    </NavLink>
-                  </Typography>
-                </>
-              }
+                {
+                  role?.role === 'employee' && <>
+                    <Typography as="li" className="p-1 font-normal gro">
+                      <NavLink
+                        to={"/dashBoard/workSheet"}
+                        end
+                        className={({ isActive, isPending }) =>
+                          isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
+                        }
+                      >
+                        Work Sheet
+                      </NavLink>
+                    </Typography>
 
-            </ul>
+                    <Typography as="li" className="p-1 font-normal gro">
+                      <NavLink
+                        to={"/dashBoard/paymentHistory"}
+                        end
+                        className={({ isActive, isPending }) =>
+                          isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
+                        }
+                      >
+                        Payment History
+                      </NavLink>
+                    </Typography>
+                  </>
+                }
+
+              </ul>
+            }
           </div>
 
         </ul>

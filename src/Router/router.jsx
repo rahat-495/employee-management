@@ -16,6 +16,8 @@ import AdminPrivate from "../Private/AdminPrivate";
 import AllEmployeeList from "../Pages/DashBoard/Admin/AllEmployeeList";
 import DashPrivate from "../Private/DashPrivate";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import AllMessages from "../Pages/DashBoard/Admin/AllMessages";
+import MessagesDetials from "../Pages/DashBoard/Admin/MessagesDetials";
 
 const router = createBrowserRouter([
     {
@@ -67,6 +69,14 @@ const router = createBrowserRouter([
             {
                 path : 'all-employee-list' ,
                 element : <AdminPrivate><AllEmployeeList /></AdminPrivate> ,
+            },
+            {
+                path : 'messages' ,
+                element : <AdminPrivate><AllMessages /></AdminPrivate> ,
+            },
+            {
+                path : 'messages/:id' ,
+                element : <AdminPrivate><MessagesDetials /></AdminPrivate> ,
             },
         ]
     }
