@@ -76,7 +76,7 @@ const Testimonial = () => {
             </Swiper>
             </div>
 
-            <div className="flex lg:hidden overflow-x-hidden">
+            <div className="hidden md:flex lg:hidden overflow-x-hidden">
             <Swiper
                 breakpoints={{
                     576: {
