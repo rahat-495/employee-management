@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosCommon = axios.create({
-    baseURL : 'http://localhost:5555'
+    baseURL : 'https://assignment-12-server-omega-three.vercel.app'
 })
 
 const useAxiosCommon = () => {

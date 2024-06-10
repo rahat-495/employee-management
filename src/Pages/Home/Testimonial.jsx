@@ -15,7 +15,7 @@ const Testimonial = () => {
     const {data : review = []} = useQuery({
         queryKey : ['review'] ,
         queryFn : async () => {
-            const {data} = await axiosCommon.get('http://localhost:5555/reviews') ;
+            const {data} = await axiosCommon.get('https://assignment-12-server-omega-three.vercel.app/reviews') ;
             return data ;
         }
     })
