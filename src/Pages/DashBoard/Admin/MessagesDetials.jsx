@@ -20,7 +20,7 @@ const MessagesDetials = () => {
         <div className="flex gro my-20 flex-col items-center justify-center gap-3">
             <h1 className="font-semibold text-xl">{singleMessage?.name}</h1>
             <p className="">Email : {singleMessage?.email}</p>
-            <p className="w-1/3 mx-auto text-center">{singleMessage?.message}</p>
+            <p className="lg:w-1/3 mx-auto text-center">{singleMessage?.message}</p>
         </div>
     );
 };
