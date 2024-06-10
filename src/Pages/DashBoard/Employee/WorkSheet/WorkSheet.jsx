@@ -15,7 +15,7 @@ const WorkSheet = () => {
     const {user , loading} = useAuth() ;
     const axiosSecure = useAxiosSecure() ;
     const [startDate , setStartDate] = useState(new Date()) ;
-    const { register , handleSubmit } = useForm() ;
+    const { register , handleSubmit , reset } = useForm() ;
 
     const {data : workSheets = [] , refetch , isLoading} = useQuery({
         queryKey : ['workSheets'] ,
@@ -61,6 +61,7 @@ const WorkSheet = () => {
             month : (startDate.getMonth() + 1) ,
         }
         await mutatePost(workSheet) ;
+        reset() ;
     }
 
     const handleDelete = (id) => {
