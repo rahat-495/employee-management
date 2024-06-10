@@ -1,3 +1,4 @@
+
 import {
   Card,
   CardHeader,
@@ -182,8 +183,8 @@ const Register = () => {
         </CardHeader>
 
         <CardBody className="flex flex-col gap-4">
-          <form onSubmit={handleSubmit} className="grid grid-cols-2 grid-rows-2 gap-4">
-            <Input required type="text" name="name" label="Name" size="lg" />
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 lg:gap-4">
+            <Input className="h-full" required type="text" name="name" label="Name" size="lg" />
 
             <div className="border border-[#B0BEC5] p-0 rounded-md">
               <input

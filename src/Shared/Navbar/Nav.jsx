@@ -318,7 +318,7 @@ const Nav = () => {
                                 </div>
                             </div>
                           ) : (
-                            <div className="flex items-center gap-5 absolute bottom-8 right-5 md:bottom-8 md:right-20">
+                            <div className="flex items-center gap-5 absolute bottom-6 right-12 md:bottom-8 md:right-20">
                               <Link to={"/login"}>
                                 <Button
                                   variant="text"
