@@ -4,7 +4,7 @@ const Services = () => {
     return (
         <div className="mt-40 mb-20">
             
-            <h1 className="capitalize font-semibold gro text-4xl text-center">How we help you</h1>
+            <h1 className="capitalize font-semibold gro text-4xl text-center">Services</h1>
             <p className="text-center mx-auto w-[370px] mt-3 gro">Our team of experts is dedicated to helping you achive your goals .</p>
 
             <div className="flex flex-col items-center gap-10 mt-16">
