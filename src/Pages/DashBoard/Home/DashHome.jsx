@@ -4,8 +4,10 @@ import useRole from "../../../Hooks/useRole";
 
 const DashHome = () => {
     
-    const {user} = useAuth() ;
-    const [role] = useRole() ;
+    const {user , loading} = useAuth() ;
+    const [role , isLoading] = useRole() ;
+
+    if(loading || isLoading) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span> ;
 
     return (
         <div className="w-3/4 my-20 mx-auto">

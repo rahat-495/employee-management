@@ -6,15 +6,17 @@ import useAuth from "../../../../Hooks/useAuth";
 const PaymentHistory = () => {
 
     const axiosSecure = useAxiosSecure() ;
-    const {user} = useAuth() ;
+    const {user , loading} = useAuth() ;
 
-    const {data : allPayments = []} = useQuery({
+    const {data : allPayments = [] , isLoading} = useQuery({
         queryKey : ['employeePayments'] ,
         queryFn : async () => {
             const {data} = await axiosSecure.get(`/user/monthly/payments/${user?.email}`) ;
             return data ;
         }
     })
+
+    if(loading , isLoading) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span> ;
 
     return (
         <div className="my-28">

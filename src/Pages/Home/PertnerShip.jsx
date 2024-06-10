@@ -4,7 +4,7 @@ import { Button } from "@material-tailwind/react";
 const PertnerShip = () => {
     return (
         <div className="my-28">
-            <h1 className="gro text-4xl text-center my-3 font-semibold mx-auto">Our Success</h1>
+            <h1 className="gro text-4xl text-center my-3 font-semibold mx-auto underline">Our Success</h1>
             <div className="flex-col flex lg:flex-row items-center justify-between my-20 gap-20">
                 <img className="lg:w-2/5 border rounded-lg" src="https://powerslides.com/wp-content/uploads/2021/12/Success-Story-Template-2.png" alt="" />
                 <div className="gro flex-col flex items-start h-full gap-5">

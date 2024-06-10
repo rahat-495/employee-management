@@ -7,9 +7,11 @@ import { FaFire, FaRegStar, FaStar } from "react-icons/fa";
 import { useState } from "react";
 import { CgMenuGridO } from "react-icons/cg";
 import { HiMenu } from "react-icons/hi";
+import useAuth from "../../../Hooks/useAuth";
 
 const AllEmployeeList = () => {
 
+    const {loading} = useAuth() ;
     const [value , setValue] = useState(true) ;
     const [userData , setUserData] = useState({}) ;
     const axiosSecure = useAxiosSecure() ;
@@ -31,7 +33,7 @@ const AllEmployeeList = () => {
         }
     })
 
-    const {data : verifiedUsers = [] , refetch} = useQuery({
+    const {data : verifiedUsers = [] , isLoading , refetch} = useQuery({
         queryKey : ['verifiedUsers'] ,
         queryFn : async () => {
             const {data} = await axiosSecure.get(`/verified-users`) ;
@@ -92,6 +94,8 @@ const AllEmployeeList = () => {
         form.reset() ;
     }
 
+    if(loading , isLoading) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span> ;
+
     return (
         <div className=" mt-20">
             <div className="mx-3 lg:w-3/4 lg:mx-auto mt-5 flex flex-col">
@@ -132,14 +136,14 @@ const AllEmployeeList = () => {
                                         <td>
                                             {
                                                 item.role === 'hr' ?
-                                                <Button onClick={() => handleRoleChange(item)} className="bg-transparent py-[10px] flex items-center justify-center gap-2 shadow-none w-[125%] md:w-[95%] lg:w-1/2 hover:shadow-none text-neutral-900 capitalize border-[#B0BEC5] border">
+                                                <Button onClick={() => handleRoleChange(item)} className="bg-transparent py-[10px] flex items-center justify-center gap-2 shadow-none w-[125%] md:w-[100%] lg:w-1/2 hover:shadow-none text-neutral-900 capitalize border-[#B0BEC5] border">
                                                     Already HR <FaStar  className="text-orange-500 text-sm"/>
                                                 </Button> : 
                                                 <Button onClick={() => (item.isFired ? Swal.fire({
                                                     title: "Oops !",
                                                     html: `You cannot make a fired employee HR <br/> To make them HR first unfire them.`,
                                                     icon: "error"
-                                                }) : handleRoleChange(item))} className="bg-transparent flex items-center py-[10px] justify-center gap-2 shadow-none w-[125%] md:w-[95%] lg:w-1/2 hover:shadow-none text-neutral-900 capitalize border-[#B0BEC5] border">
+                                                }) : handleRoleChange(item))} className="bg-transparent flex items-center py-[10px] justify-center gap-2 shadow-none w-[125%] md:w-[100%] lg:w-1/2 hover:shadow-none text-neutral-900 capitalize border-[#B0BEC5] border">
                                                     Make HR <FaRegStar className="text-orange-500 text-sm"/>
                                                 </Button> 
                                             }

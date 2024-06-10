@@ -2,18 +2,22 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const AllMessages = () => {
 
+    const {loading} = useAuth() ;
     const axiosSecure = useAxiosSecure() ;
 
-    const {data : allMessages = []} = useQuery({
+    const {data : allMessages = [] , isLoading} = useQuery({
         queryKey : ['messages'] ,
         queryFn : async () => {
             const {data} = await axiosSecure.get('/message') ;
             return data ;
         }
     })
+
+    if(loading , isLoading) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span> ;
 
     return (
         <div className="mb-14">

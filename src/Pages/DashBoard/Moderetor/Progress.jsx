@@ -2,14 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Button, Option, Select } from "@material-tailwind/react";
 import { useState } from "react";
+import useAuth from "../../../Hooks/useAuth";
 
 const Progress = () => {
 
+    const {loading} = useAuth() ;
     const [month , setMonth] = useState(0) ;
     const [name , setName] = useState('') ;
     const axiosSecure = useAxiosSecure() ;
 
-    const {data : allWorks = [] , refetch} = useQuery({
+    const {data : allWorks = [] , isLoading , refetch} = useQuery({
         queryKey : ['allWorks' , name , month] ,
         queryFn : async () => {
             const {data} = await axiosSecure.get(`/all-users-works?month=${month}&name=${name}`) ;
@@ -24,7 +26,6 @@ const Progress = () => {
             return data ;
         }
     })
-    console.log(allWorks);
 
     const handleName = (e) => {
         setName(e);
@@ -35,6 +36,8 @@ const Progress = () => {
         setMonth(parseInt(e));
         refetch() ;
     }
+
+    if(loading , isLoading) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span> ;
 
     return (
         <div className=" my-14">

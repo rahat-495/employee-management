@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 const ContactUs = () => {
 
-    const {user} = useAuth() ;
+    const {user , loading} = useAuth() ;
     const axiosCommon = useAxiosCommon() ;
 
     const handleSubmit = async (e) => {
@@ -31,6 +31,8 @@ const ContactUs = () => {
             form.reset() ;
         }
     }
+
+    if(loading) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span> ;
 
     return (
         <div className="flex flex-col items-center justify-center gap-5 w-full min-h-[70vh]">

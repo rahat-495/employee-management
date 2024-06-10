@@ -85,7 +85,7 @@ const WorkSheet = () => {
         });
     }
 
-    if(loading || isLoading || isPending) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-primary"></span> ;
+    if(loading || isLoading || isPending) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span> ;
 
     return (
         <div className="flex flex-col gap-3 grid-rows-1  my-20">

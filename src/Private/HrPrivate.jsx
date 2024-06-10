@@ -9,7 +9,7 @@ const HrPrivate = ({children}) => {
     const {user , loading} = useAuth() ;
 
     if(!user || loading || isLoading){
-        return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner loading-lg"></span>
+        return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span>
     }
 
     if(user && role?.role === 'hr'){

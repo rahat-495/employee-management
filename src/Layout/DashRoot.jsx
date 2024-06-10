@@ -7,7 +7,7 @@ const DashRoot = () => {
     return (
         <div className="">
             
-            <div className="bg-[#bfbfff] sticky top-0 z-10">
+            <div className="bg-[#CCCCFF] sticky top-0 z-10">
                 <Nav/>
             </div>
 

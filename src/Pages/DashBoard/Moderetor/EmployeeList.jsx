@@ -87,7 +87,7 @@ const EmployeeList = () => {
     setSingleUser(user);
   };
 
-  if (loading || isLoading) return <span className="loading loading-spinner text-primary"></span>;
+  if(loading , isLoading) return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner text-[#CCCCFF]"></span> ;
 
   return (
     <div className=" my-20">
