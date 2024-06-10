@@ -11,7 +11,7 @@
 
 ------------------------------------------------ About admin ------------------------------------------------
 
-Name : Md Rahat , Email : md@gmail.com , Password : (asdfASDF^)
+Name : Md Rahat , Email : md@gmail.com , Password : asdfASDF^
 
 ------------------------------------------------ Features ------------------------------------------------
 
