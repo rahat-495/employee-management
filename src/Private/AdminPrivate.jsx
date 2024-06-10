@@ -1,5 +1,5 @@
 
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
@@ -7,7 +7,6 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 const AdminPrivate = ({children}) => {
 
     const {user , loading} = useAuth() ;
-    const location = useLocation() ;
     const axiosSecure = useAxiosSecure() ;
 
     const { data : role , isLoading} = useQuery({
@@ -27,7 +26,7 @@ const AdminPrivate = ({children}) => {
     }
 
     if(!user || role?.role !== 'admin'){
-        return <Navigate state={location.pathname} to="/"></Navigate>
+        return <Navigate to="/"></Navigate>
     }
 };
 

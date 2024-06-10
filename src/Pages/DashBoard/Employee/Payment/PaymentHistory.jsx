@@ -18,6 +18,7 @@ const PaymentHistory = () => {
 
     return (
         <div className="my-28">
+            <h1 className="gro text-3xl font-semibold text-center mb-10">Payment History</h1>
             <div className="overflow-x-hidden rounded-lg max-h-96 overflow-y-auto w-3/4 mx-auto border-[#B0BEC5] border">
                     <table className="table table-zebra ">
                         {/* head */}
@@ -29,7 +30,7 @@ const PaymentHistory = () => {
                                 <th>Transaction Id</th>
                             </tr>
                         </thead>
-                        <tbody className="h-[550px]">
+                        <tbody className={`${allPayments.length > 5 && 'h-[550px]'}`}>
 
                             {
                                 allPayments.map((item , index) => 

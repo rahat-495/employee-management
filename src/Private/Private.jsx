@@ -7,9 +7,9 @@ const Private = ({children}) => {
 
     const {user , loading} = useAuth() ;
     const location = useLocation() ;
-    const [role] = useRole() ;
+    const [role , isLoading] = useRole() ;
 
-    if(loading){
+    if(loading || isLoading){
         return <span className="loading min-h-[100vh] mx-auto min-w-[20%] flex items-center justify-center loading-spinner loading-lg"></span>
     }
 

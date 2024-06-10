@@ -19,7 +19,7 @@ const Testimonial = () => {
     })
 
     return (
-        <div className="mb-20">
+        <div className="mt-40">
 
             <h1 className="gro text-5xl text-center font-semibold">Testimonials</h1>
 

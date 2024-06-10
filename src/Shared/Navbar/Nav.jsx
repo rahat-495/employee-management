@@ -11,6 +11,7 @@ import {Link, NavLink} from 'react-router-dom' ;
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import {useQuery} from '@tanstack/react-query'
+import { FaChevronDown } from "react-icons/fa";
 
 const Nav = () => {
   
@@ -66,7 +67,7 @@ const Nav = () => {
                 <NavLink to={'/dashBoard'} className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
                 }>
-                  DashBoard
+                  <p className="flex items-center gap-2">DashBoard <FaChevronDown /></p>
                 </NavLink>
               </Typography>
             </div>
