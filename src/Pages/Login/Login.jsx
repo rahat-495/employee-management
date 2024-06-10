@@ -9,7 +9,6 @@ import {
     Checkbox,
     Button,
   } from "@material-tailwind/react";
-  import { FaGithub } from "react-icons/fa";
   import { Link, useLocation, useNavigate } from "react-router-dom";
   import 'react-toastify/dist/ReactToastify.css';
   import { IoMdEye, IoMdEyeOff } from "react-icons/io";
@@ -22,7 +21,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   
-    const {signIn , googleLogin , githubLogin , user , logOut} = useAuth() ;
+    const {signIn , googleLogin , user , logOut} = useAuth() ;
     const location = useLocation() ;
     const navigate = useNavigate() ;
     const [eye , setEye] = useState(false) ;
@@ -144,26 +143,6 @@ const Login = () => {
         console.log(error);
       })
     }
-  
-    const handleGithubLogin = () => {
-      githubLogin()
-      .then((result) => {
-        console.log(result);
-        toast.success('Login Success Fully !') ;
-        
-        setTimeout(() => {
-          if(location.state){
-            navigate(location.state) ;
-          }
-          else{
-            navigate('/') ;
-          }
-        }, 1000);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-    }
 
     if(user) return navigate('/') ;
     
@@ -218,11 +197,6 @@ const Login = () => {
                     <Button onClick={handleGoogleLogin} className="text-lg gap-3 justify-center flex items-center bg-transparent text-black border border-[#343434] hover:shadow-none">
                         <FcGoogle  className="text-2xl"/>
                         <p className="text-base">Login With Google</p>
-                    </Button>
-                      
-                    <Button onClick={handleGithubLogin} className="text-lg gap-3 justify-center flex items-center bg-transparent text-black border border-[#343434] hover:shadow-none">
-                        <FaGithub className="text-2xl"/>
-                        <p className="text-base">Login With GitHub</p>
                     </Button>
                     
               </form>
