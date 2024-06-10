@@ -92,7 +92,7 @@ const EmployeeList = () => {
   return (
     <div className=" my-20">
 
-      <h1 className="text-center mx-auto gro my-10 text-3xl font-semiboldSing me a song from employees paycheck to HR, a different place disguise ruled a family. Something like newspaper. from the rest of its flat twisted. 20th. classmate shower Fifa World Cup All the police reporters available spying employees to appear on this case. Now in Japan, future polls hitting the boys name from a drop down select month from a setman from Uttar Pradesh. Don't kill that mum with me when you're sick. Fan, since so the oil goes on For that NNC auditor in a 10th day, including nature. OK, in business, I am in business. My features hire existential aviation In your cigarette clinic and you can find an employee or HR after playing some of the Two CFRIT Game Larry disappointed in all of ">Employee List</h1>
+      <h1 className="text-center mx-auto gro my-10 text-3xl font-semibold">Employee List</h1>
 
       <Card className="h-full mx-3 lg:w-3/4 lg:mx-auto overflow-auto shadow-none border border-[#B0BEC5]">
         <table className="w-full min-w-max table-auto text-left">
