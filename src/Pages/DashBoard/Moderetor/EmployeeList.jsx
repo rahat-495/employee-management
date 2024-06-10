@@ -91,6 +91,9 @@ const EmployeeList = () => {
 
   return (
     <div className=" my-20">
+
+      <h1 className="text-center mx-auto gro my-10 text-3xl font-semibold">Employee List</h1>
+
       <Card className="h-full mx-3 lg:w-3/4 lg:mx-auto overflow-auto shadow-none border border-[#B0BEC5]">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
