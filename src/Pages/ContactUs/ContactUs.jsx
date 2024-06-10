@@ -39,7 +39,7 @@ const ContactUs = () => {
 
             <div className="flex flex-col items-start justify-between gro gap-10">
                     
-                <div className="flex items-center justify-between gap-10">
+                <div className="flex-col w-full flex md:flex-row lg:flex-row items-center justify-between gap-10">
 
                     <div className="flex items-center flex-col justify-center">
                         <p className="p-3 bg-[#E91E63] rounded-full text-center text-white">
@@ -68,7 +68,7 @@ const ContactUs = () => {
                 </div>
 
                 <div className="w-full">
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-5 mb-10">
                         <div className="flex flex-col items-center gap-5">
                             <Input defaultValue={user?.displayName} name="name" className="" type="text" label="Name" required/>
                             <Input defaultValue={user?.email} name="email" className="" type="email" label="Email" required/>

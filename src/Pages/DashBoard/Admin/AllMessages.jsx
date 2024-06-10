@@ -16,11 +16,11 @@ const AllMessages = () => {
     })
 
     return (
-        <div>
+        <div className="mb-14">
 
             <h1 className="text-center gro font-semibold my-10 text-3xl">All Messages</h1>
 
-            <div className="w-3/4 mx-auto rounded-lg overflow-auto shadow-none border border-[#B0BEC5]">
+            <div className="mx-3 lg:w-3/4 lg:mx-auto rounded-lg overflow-auto shadow-none border border-[#B0BEC5]">
                 <table className="table table-zebra gro">
                     <thead>
                         <tr>

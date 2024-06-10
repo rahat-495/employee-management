@@ -39,7 +39,7 @@ const Progress = () => {
     return (
         <div className=" my-14">
             
-            <div className="w-3/4 mx-auto grid grid-cols-3 gap-5">
+            <div className="mx-3 grid-cols-1 md:grid-cols-3 lg:w-3/4 lg:mx-auto grid lg:grid-cols-3 gap-5">
 
                 <Select onChange={(e) => handleName(e)} label="Employees Name">
                     {
@@ -66,7 +66,7 @@ const Progress = () => {
 
             </div>
 
-            <div className="w-3/4 mx-auto mt-5">
+            <div className="mx-3 lg:w-3/4 lg:mx-auto mt-5">
                 <div className="overflow-x-auto rounded-lg border-[#B0BEC5] border">
                     <table className="table table-zebra">
                         {/* head */}

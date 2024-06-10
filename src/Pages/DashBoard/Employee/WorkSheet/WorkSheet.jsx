@@ -89,10 +89,10 @@ const WorkSheet = () => {
     return (
         <div className="flex flex-col gap-3 grid-rows-1  my-20">
             
-            <div className="w-3/4 mx-auto">
+            <div className="mx-3 lg:w-3/4 lg:mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
 
-                    <div className="grid grid-cols-4 gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
 
                         <select required {...register("task")} className="border px-3 py-[7px] border-[#B0BEC5] cursor-pointer w-full items-center justify-center rounded-lg">
                             <option value="sales">Sales</option>
@@ -106,9 +106,9 @@ const WorkSheet = () => {
                         <div className="w-full">
                             <DatePicker 
                                 required 
-                                className="border px-3 py-[7px] border-[#B0BEC5] items-center w-[155%] justify-center rounded-lg" 
+                                className="border px-3 py-[7px] border-[#B0BEC5] items-center w-[182%] md:w-[165%] lg:w-[155%] justify-center rounded-lg" 
                                 selected={startDate} 
-                                onChange={(date) => setStartDate(date)} 
+                                onChange={(date) => setStartDate(date)}
                                 dateFormat="yyyy/MM/dd"
                             />
                         </div>
@@ -120,11 +120,11 @@ const WorkSheet = () => {
                 </form>
             </div>
 
-            <div className="w-3/4 mx-auto mt-5">
+            <div className="mx-3 lg:w-3/4 lg:mx-auto mt-5">
                 <div className="overflow-x-auto max-h-[70vh] overflow-y-auto rounded-lg border-[#B0BEC5] border">
                     <table className="table table-zebra h-4/5">
                         {/* head */}
-                        <thead>
+                        <thead className="bg-[#BFBFFF]">
                             <tr>
                                 <th>#</th>
                                 <th>Tasks</th>

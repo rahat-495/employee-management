@@ -94,7 +94,7 @@ const AllEmployeeList = () => {
 
     return (
         <div className=" mt-20">
-            <div className="w-3/4 mx-auto mt-5 flex flex-col">
+            <div className="mx-3 lg:w-3/4 lg:mx-auto mt-5 flex flex-col">
 
                 <div className="">
                     {
@@ -107,7 +107,7 @@ const AllEmployeeList = () => {
                 {
                     value ? 
 
-                    <div className="overflow-x-auto rounded-lg border-[#B0BEC5] border">
+                    <div className="overflow-x-auto rounded-lg border-[#B0BEC5] border mb-10">
                         <table className="table table-zebra">
 
                             <thead>
@@ -132,14 +132,14 @@ const AllEmployeeList = () => {
                                         <td>
                                             {
                                                 item.role === 'hr' ?
-                                                <Button onClick={() => handleRoleChange(item)} className="bg-transparent flex items-center justify-center gap-2 shadow-none w-1/2 hover:shadow-none text-neutral-900 capitalize border-[#B0BEC5] border">
+                                                <Button onClick={() => handleRoleChange(item)} className="bg-transparent py-[10px] flex items-center justify-center gap-2 shadow-none w-[125%] md:w-[95%] lg:w-1/2 hover:shadow-none text-neutral-900 capitalize border-[#B0BEC5] border">
                                                     Already HR <FaStar  className="text-orange-500 text-sm"/>
                                                 </Button> : 
                                                 <Button onClick={() => (item.isFired ? Swal.fire({
                                                     title: "Oops !",
                                                     html: `You cannot make a fired employee HR <br/> To make them HR first unfire them.`,
                                                     icon: "error"
-                                                }) : handleRoleChange(item))} className="bg-transparent flex items-center justify-center gap-2 shadow-none w-1/2 hover:shadow-none text-neutral-900 capitalize border-[#B0BEC5] border">
+                                                }) : handleRoleChange(item))} className="bg-transparent flex items-center py-[10px] justify-center gap-2 shadow-none w-[125%] md:w-[95%] lg:w-1/2 hover:shadow-none text-neutral-900 capitalize border-[#B0BEC5] border">
                                                     Make HR <FaRegStar className="text-orange-500 text-sm"/>
                                                 </Button> 
                                             }
@@ -147,9 +147,9 @@ const AllEmployeeList = () => {
                                         <td>
                                             {
                                                 item.isFired ? 
-                                                <Button size="md" onClick={() => handleFireing(item)} className="bg-transparent w-2/5 flex justify-center text-center shadow-none gro hover:shadow-none border-[#B0BEC5] border text-neutral-900 capitalize gro">Fired</Button> :
-                                                <Button size="md" onClick={() => handleFireing(item)} className="bg-transparent w-2/5 flex justify-center text-center gro shadow-none hover:shadow-none border-[#B0BEC5] border">
-                                                    <FaFire className="text-neutral-900 text-lg"/>
+                                                <Button size="sm" onClick={() => handleFireing(item)} className="bg-transparent ml-3 w-3/4 lg:w-2/5 flex lg:ml-0 justify-center text-center shadow-none gro hover:shadow-none border-[#B0BEC5] border text-neutral-900 capitalize gro">Fired</Button> :
+                                                <Button size="sm" onClick={() => handleFireing(item)} className="bg-transparent ml-3 text-xl w-3/4 lg:ml-0 lg:w-2/5 flex justify-center text-center gro shadow-none hover:shadow-none border-[#B0BEC5] border">
+                                                    <FaFire className="text-neutral-900 text-lx"/>
                                                 </Button>
                                             }
                                         </td>
@@ -183,10 +183,10 @@ const AllEmployeeList = () => {
                         </table>
                     </div> :
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
                         {
                             verifiedUsers?.map((user) => <div key={user._id}>
-                                <div className="card p-5 rounded-lg border bg-base-100">
+                                <div className="card p-1 lg:p-5 rounded-lg border bg-base-100">
                                     <div className="card-body">
 
                                         <h1 className="text-xl text-center font-bold gro">{user?.name}</h1>

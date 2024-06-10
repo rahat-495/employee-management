@@ -14,7 +14,7 @@ const DashPrivate = ({children}) => {
         return children ;
     }
 
-    return <Navigate state={'/dashBoard'} to="/login"></Navigate>
+    return <Navigate state={'/dashBoard/home'} to="/login"></Navigate>
 };
 
 export default DashPrivate;

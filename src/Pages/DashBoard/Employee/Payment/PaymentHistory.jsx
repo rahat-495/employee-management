@@ -19,7 +19,7 @@ const PaymentHistory = () => {
     return (
         <div className="my-28">
             <h1 className="gro text-3xl font-semibold text-center mb-10">Payment History</h1>
-            <div className="overflow-x-hidden rounded-lg max-h-96 overflow-y-auto w-3/4 mx-auto border-[#B0BEC5] border">
+            <div className="overflow-x-auto rounded-lg max-h-96 overflow-y-auto mx-3 lg:w-3/4 lg:mx-auto border-[#B0BEC5] border">
                     <table className="table table-zebra ">
                         {/* head */}
                         <thead className="sticky top-0 z-10 text-white text-lg bg-[#BFBFFF]">

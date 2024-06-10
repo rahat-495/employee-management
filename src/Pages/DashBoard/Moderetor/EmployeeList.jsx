@@ -91,7 +91,7 @@ const EmployeeList = () => {
 
   return (
     <div className=" my-20">
-      <Card className="h-full w-3/4 mx-auto overflow-auto shadow-none border border-[#B0BEC5]">
+      <Card className="h-full mx-3 lg:w-3/4 lg:mx-auto overflow-auto shadow-none border border-[#B0BEC5]">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
