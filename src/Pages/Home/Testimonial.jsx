@@ -6,24 +6,26 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import useAxiosCommon from "../../Hooks/useAxiosCommon";
 
 const Testimonial = () => {
+
+    const axiosCommon = useAxiosCommon() ;
 
     const {data : review = []} = useQuery({
         queryKey : ['review'] ,
         queryFn : async () => {
-            const {data} = await axios.get('http://localhost:5555/reviews') ;
+            const {data} = await axiosCommon.get('http://localhost:5555/reviews') ;
             return data ;
         }
     })
 
     return (
-        <div className="mt-40">
+        <div className="mt-40 w-full overflow-x-hidden">
 
             <h1 className="gro text-5xl text-center font-semibold">Testimonials</h1>
 
-            <div className="">
+            <div className="hidden lg:flex overflow-x-hidden">
                 <Swiper
                     navigation={true}
                     pagination={{
@@ -43,6 +45,67 @@ const Testimonial = () => {
 
                 </Swiper>
             </div>
+
+            <div className="flex lg:hidden md:hidden overflow-x-hidden">
+            <Swiper
+                breakpoints={{
+                    576: {
+                    width: 576,
+                    slidesPerView: 1,
+                    },
+                    768: {
+                    width: 768,
+                    slidesPerView: 1,
+                    },
+                }}
+                pagination={{
+                dynamicBullets: true,
+                }}
+                modules={[Pagination]}
+                className="mySwiper"
+            >
+                {
+                    review.map((slide) => <SwiperSlide key={slide._id} className="flex flex-col items-center justify-center px-36 my-14">
+                        <div className="flex flex-col items-center justify-center gap-3">
+                            <p className="text-center gro text-orange-600 font-semiboldm text-xl">{slide.name}</p>
+                            <p className="text-center gro w-4/5 mx-auto mt-5">{slide.details.slice(0,57) + '...'}</p>
+                            <Rating className="mx-auto flex items-center mt-2 justify-center text-3xl" value={slide.rating} readonly />
+                        </div>
+                    </SwiperSlide>)
+                }
+            </Swiper>
+            </div>
+
+            <div className="flex lg:hidden overflow-x-hidden">
+            <Swiper
+                breakpoints={{
+                    576: {
+                    width: 576,
+                    slidesPerView: 1,
+                    },
+                    768: {
+                    width: 768,
+                    slidesPerView: 1,
+                    },
+                }}
+                pagination={{
+                dynamicBullets: true,
+                }}
+                modules={[Pagination]}
+                className="mySwiper"
+            >
+                {
+                    review.map((slide) => <SwiperSlide key={slide._id} className="flex flex-col items-center justify-center px-36 my-14">
+                        <div className="flex flex-col items-center justify-center gap-3">
+                            <p className="text-center gro text-orange-600 font-semiboldm text-xl">{slide.name}</p>
+                            <p className="text-center gro w-4/5 mx-auto mt-5">{slide.details}</p>
+                            <Rating className="mx-auto flex items-center mt-2 justify-center text-3xl" value={slide.rating} readonly />
+                        </div>
+                    </SwiperSlide>)
+                }
+            </Swiper>
+            </div>
+
         </div>
     );
 };

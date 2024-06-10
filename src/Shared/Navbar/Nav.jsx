@@ -64,7 +64,7 @@ const Nav = () => {
               <Typography
                 className="p-1 font-normal gro"
               >
-                <NavLink to={'/dashBoard'} className={({ isActive, isPending }) =>
+                <NavLink to={'/dashBoard/home'} className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "underline font-bold text-white" : ""
                 }>
                   <p className="flex items-center gap-2">DashBoard <FaChevronDown /></p>

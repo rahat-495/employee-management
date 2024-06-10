@@ -11,7 +11,7 @@ const MainRoot = () => {
                 <Nav />
             </div>
 
-            <div className="max-w-screen-2xl mx-auto overflow-x-hidden">
+            <div className="mx-3 max-w-screen-2xl lg:mx-auto overflow-x-hidden">
                 <Outlet />
             </div>
             

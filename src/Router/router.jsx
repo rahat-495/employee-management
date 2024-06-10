@@ -18,6 +18,7 @@ import DashPrivate from "../Private/DashPrivate";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AllMessages from "../Pages/DashBoard/Admin/AllMessages";
 import MessagesDetials from "../Pages/DashBoard/Admin/MessagesDetials";
+import DashHome from "../Pages/DashBoard/Home/DashHome";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path : '/dashBoard' ,
         element : <DashPrivate><DashRoot /></DashPrivate> ,
         children : [
+            {
+                path : 'home' ,
+                element : <DashHome /> ,
+            },
             {
                 path : 'workSheet' ,
                 element : <Private><WorkSheet /></Private> ,
